@@ -59,10 +59,14 @@ Just give the agent LinkedIn **company** URLs, e.g.:
 
 > Use the linkedin-scraper skill on https://www.linkedin.com/company/viggle/
 
-The agent runs the scan and produces **`linkedin_scout_results.xlsx`** in the
-skill's `scripts/` folder (it prints the full path when done). Two sheets:
-**People** (each person, mutual count, whether they qualify and why) and
-**Mutuals** (the shared-connection detail).
+The agent runs the scan and produces **`linkedin_scout_results.xlsx`** in your
+per-user data folder **`~/.linkedin-scraper/`** (on Windows:
+`%USERPROFILE%\.linkedin-scraper\`). The script prints the full clickable path
+when done. Two sheets: **People** (each person, mutual count, whether they
+qualify and why) and **Mutuals** (the shared-connection detail).
+
+Your login session is also stored there, so **updating/reinstalling the skill
+never logs you out**, and scans work no matter which folder they run from.
 
 You can also run it directly without the agent (use `--headless` so no browser
 window opens that could be closed mid-scan):

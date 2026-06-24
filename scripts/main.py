@@ -106,13 +106,18 @@ MAX_MUTUALS_PER_PERSON = 30
 # This is slower and more profile-views, but you asked to check every person.
 CHECK_EVERY_MUTUAL = True
 
-# Anchor all state/output files to this script's own folder, NOT the current
-# working directory. An agent (e.g. OpenClaw) may launch the script from a
-# different cwd than where login saved the session; without this, scans would
-# fail to find linkedin_session.json and report "not logged in". With it, the
-# login, session, progress, cache, and Excel always live together next to the
-# script regardless of how it's started.
-_STATE_DIR = Path(__file__).resolve().parent
+# Keep all state/output in a STABLE per-user folder, not the current working
+# directory and not the skill folder. Two reasons:
+#  1. An agent (e.g. OpenClaw) may launch the script from any cwd; a fixed path
+#     means the scan always finds the session login saved (no false
+#     "not logged in").
+#  2. Reinstalling/updating the skill wipes the skill directory — storing the
+#     session there would destroy the login on every update. ~/.linkedin-scraper
+#     survives updates.
+# Override with the LINKEDIN_SCRAPER_HOME environment variable if desired.
+import os as _os
+_STATE_DIR = Path(_os.environ.get("LINKEDIN_SCRAPER_HOME", Path.home() / ".linkedin-scraper"))
+_STATE_DIR.mkdir(parents=True, exist_ok=True)
 
 SESSION_FILE = _STATE_DIR / "linkedin_session.json"
 PROGRESS_FILE = _STATE_DIR / "scout_progress.json"
