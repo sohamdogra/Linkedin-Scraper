@@ -88,12 +88,16 @@ python scripts/main.py
 
 1. **Extract every LinkedIn company URL from the user's message.** Accept the
    forms above; ignore non-company links (e.g. `/in/` profile links).
-2. **Call the script with those URLs as arguments** (option 1 above). If there
-   are many, write them to a file and use `--urls-file`.
+2. **Call the script with those URLs as arguments, AND pass `--headless`** so
+   the scan runs with no visible browser window:
+   `python scripts/main.py --headless "<url1>" "<url2>"`. Headless matters —
+   a visible window can be closed mid-run, which breaks the mutual-checking
+   step. (The one-time `--login` is the ONLY step that must stay visible.)
+   If there are many URLs, write them to a file and use `--urls-file`.
 3. **Call the scan once and return the file.** A scan run is fully unattended
    (no prompts). If it reports `Not logged in to LinkedIn`, the one-time
    `--login` step hasn't been done yet — tell the user to run
-   `python scripts/main.py --login` and then retry.
+   `python scripts/main.py --login` (visible browser) and then retry.
 4. **Return `linkedin_scout_results.xlsx`** to the user (e.g. upload it to the
    chat). The terminal also prints a clickable `file://` path and a running
    summary (people found / qualifying) after each company.

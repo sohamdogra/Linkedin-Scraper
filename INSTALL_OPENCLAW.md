@@ -64,9 +64,10 @@ skill's `scripts/` folder (it prints the full path when done). Two sheets:
 **People** (each person, mutual count, whether they qualify and why) and
 **Mutuals** (the shared-connection detail).
 
-You can also run it directly without the agent:
+You can also run it directly without the agent (use `--headless` so no browser
+window opens that could be closed mid-scan):
 ```
-python "...\scripts\main.py" "https://www.linkedin.com/company/viggle/" "https://www.linkedin.com/company/acme/"
+python "...\scripts\main.py" --headless "https://www.linkedin.com/company/viggle/" "https://www.linkedin.com/company/acme/"
 ```
 
 ## Notes
