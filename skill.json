@@ -1,5 +1,5 @@
 {
-  "name": "linkedin-scout",
+  "name": "linkedin-scraper",
   "version": "1.0.0",
   "description": "Scan the People tab of LinkedIn company pages to find employees who share mutual connections with the logged-in user, classify them as warm-intro leads, and export the results to Excel.",
   "runtime": "python",

@@ -1,5 +1,5 @@
 ---
-name: linkedin-scout
+name: linkedin-scraper
 description: >-
   Scan the "People" tab of LinkedIn company pages to find employees who share
   mutual connections with the logged-in user, classify them as warm-intro leads
